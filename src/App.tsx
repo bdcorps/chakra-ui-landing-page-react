@@ -1,25 +1,44 @@
 import {
-  Container,
   Box,
   Center,
-  Text,
+  Container,
   Wrap,
   WrapItem,
+  Text,
   Image,
   VStack,
   SimpleGrid,
-  Flex,
-  LinkBox,
-  LinkOverlay,
-  Spacer,
 } from "@chakra-ui/react";
 import { FAQSection } from "./components/FAQSection";
 import { Feature } from "./components/Feature";
 import { HeroSection } from "./components/HeroSection";
 import { Layout } from "./components/Layout";
 import { PricingSection } from "./components/PricingSection";
-import { HighlightType, FeatureType, FAQType } from "./types";
-import { Helmet } from "react-helmet";
+
+const faqs: any[] = [
+  {
+    q: "How many clients can I bring on?",
+    a: "You can bring on 3 clients with the Free plan. Upgrade to Pro for additional seats.",
+  },
+  {
+    q: "Can I connect it to my CRM?",
+    a: "Yes! We support Notion and PipeDrive currently.",
+  },
+  {
+    q: "Do you support international payments?",
+    a: "Yes - payments can be made from and to any country.",
+  },
+  {
+    q: "Who can I connect to for support?",
+    a: "Email me at sukh@saasbase.dev",
+  },
+];
+
+export interface HighlightType {
+  icon: string;
+  title: string;
+  description: string;
+}
 
 const highlights: HighlightType[] = [
   {
@@ -48,24 +67,11 @@ const highlights: HighlightType[] = [
   },
 ];
 
-const faqs: FAQType[] = [
-  {
-    q: "How many clients can I bring on?",
-    a: "You can bring on 3 clients with the Free plan. Upgrade to Pro for additional seats.",
-  },
-  {
-    q: "Can I connect it to my CRM?",
-    a: "Yes! We support Notion and PipeDrive currently.",
-  },
-  {
-    q: "Do you support international payments?",
-    a: "Yes - payments can be made from and to any country.",
-  },
-  {
-    q: "Who can I connect to for support?",
-    a: "Email me at sukh@saasbase.dev",
-  },
-];
+interface FeatureType {
+  title: string;
+  description: string;
+  image: string;
+}
 
 const features: FeatureType[] = [
   {
@@ -94,17 +100,21 @@ const features: FeatureType[] = [
 export const App = () => {
   return (
     <Layout>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>Biller | Get paid faster</title>
-      </Helmet>
       <Box bg="gray.50">
         <HeroSection />
-
         <Container maxW="container.xl">
           <Center p={[0, 10]}>
-            <video playsInline autoPlay muted poster="image.png" loop>
-              <source src="/video.mp4" type="video/mp4" />
+            <video
+              playsInline
+              autoPlay
+              muted
+              poster="https://launchman-space.nyc3.digitaloceanspaces.com/biller-hero-2.png"
+              loop
+            >
+              <source
+                src="https://launchman-space.nyc3.digitaloceanspaces.com/biller-hero-2.webm"
+                type="video/mp4"
+              />
             </video>
           </Center>
         </Container>
@@ -122,24 +132,30 @@ export const App = () => {
             w="full"
           >
             <WrapItem>
-              <Image src="adobe-logo.svg" alt="Microsoft logo" />
+              <Image src="microsoft-logo.svg" alt="Microsoft logo" />
             </WrapItem>
 
             <WrapItem>
-              <Image src="microsoft-logo.svg" alt="Adobe logo" />
+              <Image src="adobe-logo.svg" alt="Adobe logo" />
             </WrapItem>
 
             <WrapItem>
-              <Image src="adobe-logo.svg" alt="Microsoft logo" />
+              <Image src="microsoft-logo.svg" alt="Microsoft logo" />
             </WrapItem>
 
             <WrapItem>
-              <Image src="/microsoft-logo.svg" alt="Adobe logo" />
+              <Image src="adobe-logo.svg" alt="Adobe logo" />
             </WrapItem>
           </Wrap>
         </Container>
 
-        <VStack w="full" id="features" spacing={16} py={[16, 0]}>
+        <VStack
+          backgroundColor="white"
+          w="full"
+          id="features"
+          spacing={16}
+          py={[16, 0]}
+        >
           {features.map(
             ({ title, description, image }: FeatureType, i: number) => {
               return (
@@ -184,23 +200,6 @@ export const App = () => {
               <FAQSection items={faqs} />
             </VStack>
           </Box>
-        </Container>
-
-        <Container maxW="container.lg">
-          <Flex py={6}>
-            <Box>
-              <Text>© 2022 Biller</Text>
-
-              <Text>Made by Sukh</Text>
-            </Box>
-            <Spacer />
-
-            <LinkBox>
-              <LinkOverlay href="https://twitter.com/@thisissukh_" isExternal>
-                <Image src="twitter.svg" alt="Twitter logo"></Image>
-              </LinkOverlay>
-            </LinkBox>
-          </Flex>
         </Container>
       </Box>
     </Layout>

@@ -19,10 +19,12 @@ export const HeroSection: FunctionComponent<HeroSectionProps> = () => {
             <Heading size="2xl" mb={4} color="gray.700">
               You don't have to chase your clients around to get paid
             </Heading>
+
             <Text fontSize="xl" color="gray.500">
               Freelancers use Biller to accept payments and send invoices to
               clients with a single click
             </Text>
+
             <Button
               mt={8}
               colorScheme="brand"

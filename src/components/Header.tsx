@@ -61,16 +61,16 @@ const DesktopSidebarContents = ({ name }: any) => {
         <Spacer />
         <LinkBox>
           <LinkOverlay href={`https://twitter.com/thisissukh_`} isExternal>
-            <Image src="twitter-logo.svg"></Image>
+            <Image src="twitter.svg"></Image>
           </LinkOverlay>
         </LinkBox>
       </Stack>
     </Container>
   );
 };
-
 const MobileSidebar = ({ name }: any) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <>
       <Flex w="full" align="center">
@@ -86,6 +86,7 @@ const MobileSidebar = ({ name }: any) => {
           <DrawerContent bg="gray.50">
             <DrawerCloseButton />
             <DrawerHeader>{name}</DrawerHeader>
+
             <DrawerBody>
               <DesktopSidebarContents />
             </DrawerBody>
@@ -106,6 +107,7 @@ const Sidebar = ({ name }: SidebarProps) => {
       <Box display={{ base: "flex", md: "none" }} p={4}>
         <MobileSidebar name={name} />
       </Box>
+
       <Box display={{ base: "none", md: "flex" }} bg="gray.50">
         <DesktopSidebarContents name={name} />
       </Box>
