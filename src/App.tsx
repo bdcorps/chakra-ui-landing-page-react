@@ -14,6 +14,7 @@ import { Feature } from "./components/Feature";
 import { HeroSection } from "./components/HeroSection";
 import { Layout } from "./components/Layout";
 import { PricingSection } from "./components/PricingSection";
+import { Helmet } from "react-helmet";
 
 const faqs: any[] = [
   {
@@ -100,6 +101,10 @@ const features: FeatureType[] = [
 export const App = () => {
   return (
     <Layout>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Biller | Get paid faster</title>
+      </Helmet>
       <Box bg="gray.50">
         <HeroSection />
         <Container maxW="container.xl">
